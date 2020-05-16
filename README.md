@@ -1,3 +1,3 @@
 # youtube_transcript_bot
 A selenium python bot which fetches transcripts from YouTube videos and then stores them in .txt file.
-In main python file, just provide path to your chromedriver.exe in 'PATH' variable and provide link of youtube video whose trascript you wanna fetch in main() function as parameter. Its little problemetic when '\' or emoji's are envolved in video title but otherwise it will nicely fetch transcript from youtube video into 'transcripted_txt_files' folder as .txt file.
+In main python file, just provide path to your chromedriver.exe in 'PATH' variable and provide link of youtube video whose trascript you wanna fetch in main() function as parameter. Its little problemetic when backslashes or emoji's are envolved in video title but otherwise it will nicely fetch transcript from youtube video into 'transcripted_txt_files' folder as .txt file.
