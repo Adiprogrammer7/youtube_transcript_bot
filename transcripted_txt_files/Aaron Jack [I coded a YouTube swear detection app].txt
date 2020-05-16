@@ -1,0 +1,243 @@
+did you know the movie wolf of wall
+street has the most swears of any movie
+of all time
+this movie's got 715 swear words 569 of
+which
+are the f word if you look at the
+wikipedia page they even give a squares
+per minute measurement
+which is 2.51 by the way now let's talk
+about youtube
+people have been saying that they either
+get less money or completely demonetized
+at times if they
+swear too much in a video i'm not sure
+whether this is true or not but either
+way
+i thought it would be fun to make our
+own square detection bot that can run on
+different channels
+and we can do some cool with it
+like ring channels compared to each
+other
+come up with a profanity score for how
+edgy your channel is and of course get
+the swears per minute to see if anyone
+can beat wolf of wall street so that's
+what we're gonna do in this video
+i have no idea if it's gonna work you
+guys so
+we'll see what happens and if you're
+wondering i
+swear this is a good use of my time i
+swear
+you get it to score a channel we have to
+take a sample of its videos
+let's just say the most recent 10. we'll
+pull out the swear words
+with code and then get the average
+squares per minute across
+all these videos and finally rinse and
+repeat for as many channels as we want
+the first thing i thought would be to
+download the video with some code
+and then send it to a speech to text api
+luckily google has one of these where
+you can send any video
+or music clip and extract the words so
+that makes it really easy
+this will give us a video transcript
+that we can start pulling swear words
+out of
+and doing different things with so a
+pretty good solution right
+wrong it is actually against in terms of
+service to download
+any youtube video off the platform so we
+need another plan
+i cannot believe i didn't think of this
+first but there's an entire youtube data
+api just for developers where you can
+download things like
+uh i don't know the auto generated
+captions for a video that gives you a
+whole transcript all it takes is setting
+up credentials which is
+kind of a pain in the ass and reading
+the documentation which is
+definitely a pain in the ass but if you
+can do that you can pull
+a lot of different kinds of data from
+the site once you do that you can write
+some code like this
+which will get you a list of the
+captions in all the different languages
+uh pull you out a single caption and
+then right around this line is where you
+realize oh you can't actually get
+captions from any video
+that you don't own so that was just a
+huge waste of time
+now as annoying as that was i did
+discover one super valuable thing
+it turns out when you press the little
+caption button it goes to fetch the
+captions from a url
+now if you copy that url you can
+actually see all the captions
+but it's not quite that simple and
+unfortunately it never
+is in fact coding is kind of just like
+solving one problem and then another one
+comes up in its place
+uh over and over again that's actually
+pretty depressing
+now for one minute of nerd that it
+didn't take me long to figure out at all
+we create some web scripting code
+that'll open a chrome window and then
+click on that caption button now when
+that happens we fire off an xhr request
+or asynchronous
+request that we have to also set a
+listener for in our
+scraping code within that xxr request
+there's a property for that url which we
+can capture
+but this url isn't always in english if
+you're pewdiepie you have
+13 different subtitles so luckily we can
+solve this one just by directly changing
+the url string
+setting language to english and making
+sure we're using the auto generated
+subtitles which should always be there
+now we can see the subtitles in here but
+it's in this weird json structure that
+youtube is able to
+read but we're not youtube and we don't
+want any of this bs we just want to
+extract the raw transcript
+and this code right here does just that
+converting this mess into a clean
+single string of subtitles and just like
+that we can get the subtitles for any
+different video on youtube
+i'm glad you stuck with me through that
+now the fun part
+the swearing parsing out the swear words
+is easy we just have to count the number
+of appearances of each word we want to
+look for
+then we can divide the total number by
+the length of the video to get swear
+words per minute
+after a while code can get pretty boring
+to look at even for me
+so what i did next was create a pretty
+simple front end that allows you to put
+in any video url and see how many swear
+words there are
+in it all you have to do is paste in a
+video url and it will
+tell you exactly what you want to know
+okay we are definitely not done until we
+find out who is the profanity king or
+queen
+of youtube we have to rank channels
+compared
+to each other now of course we want to
+get squares per minute but not all
+squares are created equal let's be
+honest
+so what i did was give each swear to
+rank from logan paul fan
+all the way up to your cancelled which
+allowed me to create the swear word
+index
+this lets us give every channel a meta
+score in addition to the swears per
+minute
+which is kind of a more accurate
+representation of how profane
+the channel is with a bit more web
+scripting we can capture all the recent
+video urls for a given channel
+so we'll run this on one channel first
+to make sure it works
+just don't try to scrape all the videos
+at the same time and crash your computer
+uh i'm not sure who would do that you
+know what just forget i said that
+anyway once it works it's just a matter
+of running this on as many channels as i
+can think of
+i wanted to get a list of the top 100
+channels and rented on all of them but
+more than half of them are actually
+music or foreign so that wouldn't work
+on either of those
+to filter these down well that would be
+a bunch of extra work so i'm just
+manually putting in as many as i can and
+then having them run all right i could
+think of this many people
+before my head started to hurt we got
+some fortnite players we got
+some comedians we got some comedians
+and uh disclaimer i do not watch all
+these channels they're just the ones i
+can think of
+now some of these are clearly going to
+swear a little bit more than others but
+we'll see if anyone can break that wolf
+or wall street
+benchmark of swears per minute now for
+the best part
+you can just sit back and watch your
+code run
+just sit back and watch your code
+all right it usually doesn't work on the
+first time but when it does work
+that's a good feeling
+all right how'd it go well not every
+video worked
+and then we might have had a few errors
+up here but
+we're just gonna pretend those didn't
+happen all right but
+when we look at our database we got 27
+channels
+so that's not too bad and if you
+multiply that out we looked at 270
+videos so i'm gonna build a front end to
+display
+the channels with their rankings uh to
+see who came out on top
+looks like trevor wallace edges out
+michael reeves
+for the number one spot but no one got
+even close to wolf of wall street
+we've got swears per minute and then the
+meta score converts into a little
+ranking
+on the side here for the scale we've got
+hardcore
+edgy wholesome and then pristine or not
+even a single swear in
+10 videos which is pretty impressive
+when you think about it
+and i have to say i'm a little bit
+surprised that some people in this list
+filthy frank not as filthy as these
+other guys
+was this idea dumb you know what don't
+answer that
+but if you do have other project ideas
+let me know in a comment
+i'm going to be doing a lot more
+projects so feel free to subscribe
+if you're not subscribed anyway i'll
+catch you guys in the next video
+[Music]
+you
