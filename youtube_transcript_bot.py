@@ -51,4 +51,4 @@ def main(video_link):
 	blob.get_transcript()
 	blob.transcript_to_txt()
 
-main('https://www.youtube.com/watch?v=PxBYnAr0Zxc&t=308s')  #provide the youtube video url here.
+main('https://www.youtube.com/watch?v=zDYL22QNiWk')  #provide the youtube video url here.

@@ -1,0 +1,832 @@
+hey there how's it going everybody in
+this video we're going to be learning
+how to use pip env so pipi and V is a
+new way for us to combine package
+management with virtual environments and
+it's also a highly recommended packaging
+tool from Python org now a lot of teams
+and companies are switching over from
+pip to Pippy and V so it's definitely a
+nice tool to learn basically it is
+combining the features of Pip and
+virtual env so first let's go over both
+pip and virtual env in case either of
+those are unfamiliar to anyone now I'd
+say anyone watching this video who has
+done any Python work beyond the basics
+has most likely used pip but basically
+pip is a way for us to install
+additional packages that allows us to
+add a ton of functionality that doesn't
+exist in the Python standard library so
+for example if you want to do some image
+manipulation then Python might not have
+the best tools available right out of
+the box but you can use pip to install
+the pillo library and use that to work
+with images so I guess that a lot of
+people have probably seen pip before but
+I'd say fewer people have used virtual
+environments now that's a topic that a
+lot of people mean to learn eventually
+but never really get around to it but
+basically a virtual environment is a way
+for us to have a specific environment
+for each project or application that
+we're building so for example you could
+have one application that runs off of
+Python 2.7 and Django 1.5 and then
+another project that runs with Python 3
+7 and Django 2.1 so each of those
+projects would have their own version of
+Python and their own packages which is
+usually how you want to do it some
+people put off learning virtual
+environments and just try to run every
+project using their global installation
+of Python and all the packages installed
+in one place but if you do it that way
+then as soon as you update to the next
+version of Python or update your
+packages then it could break some of
+your older applications that were
+running just fine so it's best to split
+those up using virtual environments so
+before pipi and V we used pip to handle
+package management and used virtual env
+to handle virtual environments but now
+with pipi and V these can all be handled
+by one tool that simplifies the process
+so let's get started and see what this
+looks like so first we want to install
+pipi and V and
+can simply install pipi and V by using
+pip so we can just say pip install pip
+env and you can see that mine says
+requirement already satisfied because
+I've already installed it but yours
+should install there so I'm not now I'm
+going to clear the screen okay and once
+that's installed let's pretend that
+we're starting a new project so that we
+can see how we can install packages for
+that project and also create a virtual
+environment automatically so I've
+created a directory on my desktop called
+my project now you can have a project
+folder located anywhere but this is the
+one that I'm going to be using in this
+video so you can create an empty folder
+like I've done here or you can also use
+pipi and V on an existing project as
+well so once you have a project or
+directory containing your code let's
+navigate to that location within our
+command line and again I'm locating to a
+directory on my desktop called my
+project but you should navigate wherever
+your code will be located so I'm going
+to CD into that directory so I called
+that my project now right now this is
+just an empty directory so at this point
+if we were using the old method of
+installing packages for this project
+then at this point we would create a
+virtual environment using one of the
+older tools to do that and then we would
+need to manually activate that
+environment and then start installing
+the packages that we want to use in this
+project but with pipi and V this is all
+built-in together now so instead of
+creating a new virtual environment
+manually we're simply going to install
+the packages that we want with pip in V
+so let's say that we want to use the
+request package for this project if you
+haven't used the request library then
+don't worry about it we're really just
+choosing a random package to install for
+this project so to install this let's
+say pip env install requests okay so we
+can see that it did a few things there
+so once that is finished let's take a
+look at what this did so right off the
+bat if we scroll up here to the top
+where we ran that command right after we
+installed requests it first notices that
+we don't have a virtual environment for
+this project yet so it creates one for
+us we can see that here creating a
+virtual env for this project and then it
+gives us a
+location to a pip file and we'll talk
+more about a pip file in just a minute
+and then it says that it is using this
+version of Python which is where my
+Python 3 7 is installed and then it
+actually goes through and creates that
+environment for us so if I scroll down
+here a little bit we can see that it
+gives us the location of that virtual
+environment so mine is here within this
+virtual en V's directory and that
+virtual environment that it created is
+actually just a regular virtual
+environment like you'd be used to using
+in the past so you can navigate to that
+location and activate it manually if
+you'd like but pip P&V gives us simpler
+commands to interact with that
+environment than to just do it manually
+ok and next it says that it created a
+pip file the pip file is going to be a
+file that describes our environment and
+how we can build it back from scratch so
+this is similar to the requirements txt
+file that some of you may have used
+before with pip and it actually will be
+a replacement for the requirements that
+txt file within pip env now if you've
+never used a requirements txt file
+before then don't worry too much about
+it basically it just tells us which
+packages we have installed and what
+version of that package we're using so
+that's what this pip file does also but
+it's also more specific so we'll
+actually open this in just a second but
+for now let's see what else our pipi and
+B install command did for us so after it
+said it created our pip file then it
+actually installed the request package
+here and that's what though this whole
+section is doing here where it says that
+it is downloading so let's scroll past
+all of that ok and after it finish the
+request installation then it says that
+it added requests to our pip files
+packages then it says that this pip file
+dot lock was not found so it's creating
+that so pitfall dot lock is another file
+that gets created and it's similar to
+our pip file but with some key
+differences that we'll see throughout
+the video basically pip file dot lock is
+a file that we're not supposed to touch
+it's just a file that gets generated and
+produces deterministic builds and again
+we'll see more about that in just a bit
+okay so lastly here at the bottom
+we can see that it tells us that we can
+activate our new environment simply by
+saying pip env shell and if we just want
+to run a command inside that virtual
+environment then we can do pip env run
+but before we activate the virtual
+environment let's first look at the PIP
+file and the PIP file dot lock I have
+the directory with those files open and
+mice abloom text so let's open those up
+and see what they look like now you can
+use whichever editor that you want in
+order to look at these but I have them
+opened up in my sublime text so I have
+my project open over here so first I'm
+going to open up the PIP file that it
+created and this is the PIP file dot
+lock so first let's look at the PIP file
+okay so the PIP file is pretty simple
+the format that this is using is called
+tamil t om l which is designed to be a
+minimal format that mostly contains keys
+and values within these sections so we
+have a source section here that shows
+where we're downloading packages from
+and right here it's just pi pi org and
+then here we have a packages section we
+can see that it currently just contains
+the request package and it says that
+requests is equal to this asterisk here
+this star and that just means that we
+didn't specify a specific version when
+we installed requests if we had then
+there would be it would say that it's
+equal here to that specific version now
+this is nice because we're not
+specifying an exact version so any time
+we run pipi and V install and we'll go
+out and see if there are newer versions
+available for us and if there are then
+it will update those versions
+automatically so that is something that
+we would have needed to do manually in
+the past with pip now like we talked
+about before updating packages like that
+can also be risky because we don't want
+to take any chances of updates breaking
+our project but that is what the PIP
+file dot lock is for and we'll discuss
+more about that in just a bit also if we
+wanted to specify an exact version of
+the package here in the pit file then we
+could do that too and it would just stay
+with that version even if a newer one is
+available okay and lastly we can also
+see down here at the bottom that we are
+specifying which version of Python
+that we're using so I'm using Python 3 7
+but we could change that if we'd like
+okay so that is a quick overview of the
+PIP file it's a pretty simple file that
+just shows how we can create a new
+environment from scratch and this file
+is also meant to be editable we could
+add packages in here and rerun the
+install command and it would install the
+packages that we added and we'll see
+that in just a bit
+but for now let's look at the PIP file
+dot lock so I'm gonna open up pip filed
+out lock okay and real quick just let me
+kind of scroll through here and then
+scroll back up so right off the bat we
+can see that this one is a bit more
+complicated now don't be intimidated if
+you don't understand what a lot of this
+is this is a file that we're not
+actually meant to change manually this
+is a generated file that has more
+detailed information about our current
+environment now if we scroll down here
+then we can see that we have some hashes
+and for the packages that are installed
+we can see that we have more than just
+requests so this file even contains the
+dependencies that are installed when we
+installed the request library now not
+only that but it has the exact version
+of each of these packages that were
+installed so for example if we look at
+requests here then we can see that we
+have these hashes but then down here it
+also has the exact version so this is
+the good thing about having this pip
+file dot lock so this will give you a
+deterministic build and what I mean by
+that is that this lock file will
+absolutely give you the exact same
+environment every time and you only get
+a different build when you explicitly
+update the lock file and we'll see how
+to do this in just a bit so this gets us
+around the problem that we had before
+where I said that updating packages can
+break your project so the PIP file could
+see a new version of your package and
+update them accordingly and then once
+you're sure that all of your code is
+still working in development after
+you've updated those packages then you
+can simply update your lock file which
+will give you the exact packages that
+are installed at the time that you know
+work well and once you update that lock
+file then you can push that all to
+production ok so now that we've actually
+looked over the PIP file and pip
+a lakh and what the differences are
+between those now let's actually
+activate our environment and go through
+some other commands to see how to do all
+of this so to activate our environment I
+can just go back here to our command
+line I'm going to clear the screen so to
+activate our environment we can simply
+say pip env shell and we can see here it
+says launching sub shell and virtual
+environment yours may not say that if it
+doesn't that's fine but if I clear my
+screen here now then that should have
+activated our environment for our
+project now usually when you have an
+environment activated it will add
+something to the beginning of your
+prompt in the command line and it's
+doing that here so we can see that in
+parentheses here it says my project
+that's the virtual environment that it
+created for this project now if you're
+unfamiliar with using virtual
+environments what this did was it
+actually put us in an environment where
+it will now be using a different Python
+interpreter and a different location for
+all of our packages so for example if I
+run Python now that I'm here within this
+environment then we can see that it
+still might look the same as your
+default environment it's just Python 3 7
+here but if we look at our current
+Python executable we can do that by
+saying import sis and then sis not
+executable then we can see that the
+Python it's actually using is in this
+location here and this is our virtual
+environment that it created in this
+virtual env directory here so that's a
+good thing that means that whatever we
+install in this project will be separate
+from our other projects on our machine
+and that's what we want so if you'd like
+to learn more about how these Python
+paths work and how to determine the
+location and version of your current
+Python interpreter then I do have a
+separate video on that if you're
+interested and I'll be sure to leave a
+link to that in the description section
+below ok so since we also installed
+requests in this environment we should
+also be able to import that so if I say
+import requests then we can see that it
+imports that without any error so that
+means that we do have it installed ok so
+now let's go ahead and exit out of
+Python here and I'll go ahead and clear
+my screen so now let's say that we want
+to deactivate the environment to
+deactivate the environment we can simply
+say
+now there might be some confusion here
+that we used exit to deactivate the
+environment instead of using deactivate
+which you might be used to using older
+virtual environments now I was confused
+at this - what's even more confusing is
+that if you do use deactivate then it
+could actually look like it does
+something but it won't actually exit
+completely and that's because pipi and V
+actually launches a subshell to activate
+the environment and to exit that
+completely we need to use the exit
+command so be sure that you do that and
+not deactivate I know that can be a
+little confusing but this is just how we
+do it so now we no longer have that
+environment activated now we can
+actually run commands in our environment
+without activating it so we can do that
+with the pip env run command so let's
+say that I want to run Python within our
+current environment so we could activate
+the environment like we just did with
+pipi and V shell and then run Python or
+we could just simply say pip env run
+Python and that will run that Python
+command within that environment so if I
+run that and check our executable again
+sis not executable then you can see that
+this Python is using our virtual
+environment Python and again just like
+before we can import packages that we
+have installed in that environment so
+I'm going to go ahead and exit out of
+that now we never actually activated our
+environment there so we don't need to
+run exit again to get out of that
+environment we're already outside of it
+now you can run scripts that way as well
+I don't have a script in this current
+project but if we did then we could
+simply say something like pip env run
+Python script PI and that would run a
+script using the Python that is in our
+environment but that script doesn't
+exist so I'll just go ahead and delete
+that
+and let me also clear the screen here
+okay so now let's install some more
+packages for this project now we could
+do them one at a time using the install
+command that we saw before but let's see
+how to install several packages from an
+existing project so for those of us who
+have used pip before
+you're probably used to using a
+requirements txt file if you don't know
+what requirements txt file is basically
+it's just a list of dependencies and
+packages that a project needs in a
+little text file so if you start using
+pipi and V you can still use your
+requirements txt files before you
+completely switch over to using pip
+files so for example I have a
+requirements txt file that has all of
+the dependencies that I use in my Django
+course so let's say that we wanted to
+install those here using that
+requirements txt file so to do this I
+could simply say pip and V install - R
+so we want to use that - R option and
+then you would specify the requirements
+txt file that you want to use now my
+requirements dot txt file is actually up
+one directory in a snippets folder so
+I'm going to specify that location but
+at this point you would put in the
+location of wherever your requirements
+that txt file is so mine is up one
+directory in a snippets folder and that
+is requirements txt so I'm going to go
+ahead and run that so we can see that
+after we ran that it says requirements
+file provided importing into pip file so
+it updated our pip file dot lock updated
+pip top filed out lock install the
+dependencies and it's done so now let's
+open back up our pip file so I'm in pip
+file dot lock here let's switch over to
+pip file so we can see here in our
+packages section that these new packages
+were added to our pip file and those are
+the exact versions that were listed in
+my requirements txt file now if you're
+using pipi and V but people on your team
+are still using pip then you might need
+to create a requirements txt file to
+send to them the PIP command to display
+the list of dependencies that you'd use
+in a requirements that txt file is PIP
+freeze now we can do the equivalent in
+pipi and V by running the pipi and V
+lock command so let me show you this
+here so I'll pull back up my terminal
+let me
+this so if we wanted to display our
+dependencies and a way that we would add
+to our requirements txt file then we can
+say pip env lock dash R and if we run
+that then this displays the dependencies
+in a way that they would be added to a
+requirements that txt file so this is a
+good thing because if your team is still
+using pip but you want to move on the
+pipi and V then you don't necessarily
+need everybody to switch over at the
+same time you can start using it and
+features like this just make those easy
+to use together and we're gonna go over
+this lock command more in just a moment
+but for now let's move on to some
+additional pipi and V commands here ok
+so now let's look at how to install a
+package only in a dev environment so you
+can imagine that there are probably
+going to be some packages that you'll
+need for a project in your dev
+environment that you might not need in
+production so for example let's say that
+we're using PI tests to test our code
+but we don't actually want PI tests
+included when we ship our code to
+production so to do this we can simply
+install a package like normal but
+include the dev option on the end so I
+could say pip env install PI test - -
+dev and if we run that then we can see
+that that installed like it normally
+would but there's a section here that
+says adding PI tests to the PIP files
+dev packages so let's go back to our pip
+file and look at this so we can see that
+it didn't add anything to our packages
+section but there's another section down
+here called dev packages and it added PI
+tests there so it knows how to keep
+those separate and I think that's a
+really nice feature with pipi and B okay
+so now let's go back to our command line
+and let me clear the screen here now if
+we ever wanted to remove any of these
+packages that we've installed then it's
+as easy as going back to the command
+line here and using the uninstall
+command so we can just simply say pip in
+V uninstall and I'll go ahead and
+uninstall request so I will run that and
+we can see that it uninstalled requests
+and also removed it from our pip file so
+if we go back to our
+and our packages here we no longer have
+requests it's only the packages that
+were in that requirements not txt file
+from before okay so since I have this
+pip file open let's go ahead and make
+some changes in here to see how that's
+done so let's say that we wanted to
+actually use a different version of
+Python for this environment after all so
+it turns out that instead of using
+Python 37 we actually needed to use
+Python 3 6 now if we're using the old
+way of using virtual environments then
+we might need to just export our
+requirements and then delete the
+environment and recreate it from scratch
+but using Pippy and V is going to be a
+lot easier there are actually a couple
+of ways that we can do this so the first
+way that we could do this is that we can
+just come in here into our pip file and
+change the version of python so where it
+says python version down here I'm just
+going to change this to Python 3 6 and
+now we need to recreate our virtual
+environment since the existing one is
+using Python 3 7 so to do this we can
+simply go back to our terminal here I'm
+going to clear the screen and now we can
+just tell Pippy and V that the
+environment should be recreated using
+Python at 3 6 to do that we can just say
+pip env - - Python 3 6 so after that's
+done if I scroll up here to where we ran
+that command we can see that the first
+thing it says virtual env already exists
+so we want to remove the existing
+virtual env and now it creates a virtual
+1b for this project and it's using now
+this Python 3 point 6 point 1 so if we
+run the Python for that environment now
+so I'll say pip env run Python we can
+see that now this is using Python 3 6 1
+and this new environment that it created
+will also be in that virtual Ian V's
+directory so if we look at the
+executable again then we can see that
+it's still here in this virtual env
+directory so that is good so I will exit
+out of Python there now another way that
+we could have done that would have been
+to just remove the environment
+completely and then just
+recreate it from scratch using the PIP
+file and if your PIP file and
+environment ever get too far out of sync
+then it might be better just to delete
+the environment completely and then just
+recreate it from scratch so just so you
+know how to do that let's go ahead and
+see how we do this so I'm going to
+change our project back to using Python
+3.7 again so to do that I'm going to
+open our Pip file back up and I'm going
+to go down here to our Python version
+and change that to Python 3 7 and save
+that and now that we've changed that Pip
+file let's open our terminal back up now
+again the new environment that we just
+created is using Python 3 6 so let's
+just say that we want to throw that
+entire environment away and recreate it
+from scratch using the PIP file so to
+remove a virtual environment completely
+we can simply say pip env whoops Pippy
+and V - - RM so if we run that we can
+see it says removing virtual environment
+and gives the location - the invertible
+environment that we just removed now
+that only removes the environment that
+we were using but everything that we
+need to recreate that environment is
+still within the PIP file so to create
+an environment that matches the one in
+our pip file we can just simply say pip
+env install and we don't need any other
+options if we just run that then that
+will go through and create our
+environment from scratch using the
+Python version and packages from our pip
+file now if you ever get curious and
+want to look directly at your virtual
+environment then you can see the path to
+your environment just by let me clear
+this out we can simply say pip env -
+dash V env and that will give you the
+path to your virtual environment if you
+ever want to look more deeply into that
+now like I was saying before that's just
+like any other virtual environment that
+you'd create with virtual we and V so we
+could navigate to that location and run
+the commands manually to activate and
+deactivate that environment so even
+though Pippy and V is nice and new it's
+still mostly using the same things that
+you may have been familiar with already
+in the background ok so now let me clear
+the screen here now one really nice
+feature of Pippy and V
+is that we can easily check for known
+security vulnerabilities for any of our
+installed packages so to do that we can
+simply say pip env check and if I run
+that then we can see that it discovered
+a couple of things here
+so first it said checking pet 508
+requirements and that those passed but
+then whenever it checked installed
+package safety we got a couple of Django
+issues here now it's nice to have this
+feedback so that you can make the best
+decisions as to what you want to do with
+this information so it says that these
+particular issues were resolved in the
+newer versions of Django so we can see
+here that it says that this was resolved
+and that this was resolved that we have
+2.1 installed but that we could install
+two point one point two so let me update
+that version of Django that I'm using in
+my pip file so I'm going to open the PIP
+file back up and here with Django where
+it says I'm using two point one let's
+instead say two point one point two and
+save that so now back in our command
+line let's run the install command again
+so that it will install those changes
+from our pip file so I'll say pip env
+install and that is going to see that we
+have a newer version of Django in the
+pip file and it will update that for us
+okay so once that's done I'm going to
+clear my screen here and now let's run
+pip env check again so I'll say pip env
+check and we can see that when we run
+that check now that it says that we're
+all good so I think that's a really nice
+addition to pip env now another feature
+of pipi and v that i like a lot is pip
+env graph that will display a dependency
+graph showing your packages and the
+dependencies for each of those so let's
+clear the screen and run this so if I
+say pip env graph so we can see here our
+packages and dependencies for those
+packages so PI TZ here is listed as a
+dependency of Django so if you're ever
+wondering why certain packages are
+installed or trying to debug you know
+conflicting dependencies then you can
+run pip in the graph to see a map of
+what depends on
+what okay so now let me clear my screen
+here okay so we're almost finished up
+but let me show you an example of what
+you do once you're ready to push your
+code to production so currently our
+installs have been using the PIP file to
+create our environment but if you
+remember I said that the PIP file isn't
+deterministic but the PIP file dot lock
+is so what I mean by that is that the
+PIP foul lock has the exact hashes and
+versions for specific packages that
+we're currently using in our project but
+the PIP file might just tell us to grab
+the latest version of a package now
+getting the latest version is fine and
+development but when we push to
+production we want to know that we're
+pushing the exact versions of the
+packages that have already passed all of
+our testing so once you've tested all of
+your code and you know that you're ready
+to push what you have so far
+then you can create or update the
+pitbull dot lock with the current
+dependencies by saying hip env lock and
+we can see that it says that it updated
+that pip file dot lock so once that's
+done then you can take your pip file dot
+lock and move it to your production
+environment and once you're ready to
+install everything that's in your PIP
+filed out lock then you can simply run
+the command pip env install and then - -
+ignore - pip file and that will create
+an environment using what is in the PIP
+file dot lock and ignore the PIP file
+that is usually used by default ok so
+we're almost finished up here there is
+one more thing that I wanted to show
+because it's something that I personally
+look for when working with tools that
+create virtual environments and that is
+the ability to set environment variables
+that are specific to the environment now
+this is something that some tools
+overlook but I think it's extremely
+important so for example if you're
+working on multiple flask or Django
+projects and want to have environment
+variables for each project that contain
+the project secret key and database
+connection information and things like
+that then it would be nice to have the
+virtual environment handle this without
+needing to do that manually so the way
+that we can do this using pipi and V is
+create a dot env file within your
+project directory and you can set that
+environment variable within that file or
+any or multiple of our environment
+variables within that file so let's
+create this and see what this looks like
+so I'm going to open my sublime text
+here and within sublime text I know that
+this is a little hard to see over here
+on the left but I'm just going to
+correct click on my project directory
+and say new file and I want to call this
+file dot eat in V so we will create that
+and now within this dot env file we can
+add our environment variables that we
+want to be accessible in our environment
+so for example let's say that we had a
+secret key so I can say secret key is
+equal to my super secret key and now
+let's save that so now that I have that
+saved I can go back to the command line
+here and now let's see if we can see
+that environment variable within our
+environment so let's run Python from
+within our environment so to do this as
+we saw before we can say pipi and be run
+Python and we can see that the first
+line here says loading dot E and V
+environment variables ok so that's a
+good sign so now let's try to look at
+this environment variable so to access
+environment variables within Python we
+can use the OS module so I'll say import
+OS and then OS dot environed we can
+access that environment variable so we
+called that secret underscore key so if
+I run that then we can see that we get
+the value my super secret key and that
+was the value that we set in that dot
+env file now again if you're wondering
+why this is useful like I was saying you
+might have multiple projects that all
+have the same environment variable names
+so for example flask and Django projects
+are most likely all going to have secret
+keys and you don't want to manage all of
+those manually it's better to just put
+them in a dot env file specific to that
+project now another thing is that you do
+not want to commit those dot env files
+to your repository so if you're using
+git or something like that
+you're most likely going to want to add
+that dot env file to your get ignore
+file because you don't want to commit it
+for other people to see because it's
+going to could possibly have sensitive
+information like you know database
+connection strings and passwords and
+things like that so just a tip that's
+something that I use a lot is those
+environment variables within different
+projects okay so I think that is going
+to do it for this video hopefully now
+you have a good idea for how pipi and V
+works and how you can start using it on
+your projects I actually like this tool
+a lot and will most likely be using it
+instead of Pip and virtually envy for
+most projects from here on out now a lot
+of people are doing the same so it'd
+definitely be beneficial for you to
+learn this also but if you have any
+questions about what we covered in this
+video then feel free to ask in the
+comment section below and I'll do my
+best to answer those and if you enjoy
+these tutorials and would like to
+support them then there are several ways
+you can do that these are sways to
+simply like the video and give it a
+thumbs up and also it's a huge help to
+share these videos with anyone who you
+think would find them useful and if you
+have the means you can contribute
+through patreon and there's a link to
+that page in the description section
+below be sure to subscribe for future
+videos and thank you all for watching
+you
