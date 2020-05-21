@@ -22,7 +22,8 @@ class TranscriptBot:
 			opt_btn.click()
 			transcript_btn = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-popup-container.style-scope.ytd-app:nth-child(13) iron-dropdown.style-scope.ytd-popup-container:nth-child(1) div.style-scope.iron-dropdown ytd-menu-popup-renderer.style-scope.ytd-popup-container paper-listbox.style-scope.ytd-menu-popup-renderer:nth-child(1) > ytd-menu-service-item-renderer.style-scope.ytd-menu-popup-renderer:nth-child(2)")))
 			transcript_btn.click()
-			# to toggle timestamp(just reomve 2 lines from below if you you wanna keep timestamp)
+			# to toggle timestamp
+			sleep(2)
 			WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//ytd-menu-renderer[@class='style-scope ytd-engagement-panel-title-header-renderer']//button[@id='button']"))).click()
 			WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//ytd-menu-service-item-renderer[@class='style-scope ytd-menu-popup-renderer']"))).click()
 
@@ -51,4 +52,4 @@ def main(video_link):
 	blob.get_transcript()
 	blob.transcript_to_txt()
 
-main('https://www.youtube.com/watch?v=zDYL22QNiWk')  #provide the youtube video url here.
+main('https://www.youtube.com/watch?v=XQ0XQNCfRnc')  #provide the youtube video url here.
